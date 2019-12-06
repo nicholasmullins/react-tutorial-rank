@@ -8,6 +8,12 @@
 # testing
 /coverage
 
+# htmlcsstemplates
+/sass-tutorial-rank
+
+# building the html and css myself
+/tutorial-rank-sass
+
 # production
 /build
 
