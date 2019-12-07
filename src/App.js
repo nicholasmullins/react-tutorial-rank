@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
@@ -11,10 +11,23 @@ import Alert from './components/layout/Alert';
 // Since redux is separate from React, we bring react and redux together by bringing Provider in and wrapping our code //// in Provider
 import { Provider } from 'react-redux';
 import store from './store';
+import { loadUser } from './actions/auth'
+import setAuthToken from './utils/setAuthToken';
 
 import './App.css';
 
-const App = () => (
+if(localStorage.token) {
+  setAuthToken(localStorage.token)  
+}
+
+const App = () => {
+  useEffect(() => { // we use useEffect to tell our app to something after it renders (after performing the DOM updates)
+    store.dispatch(loadUser());
+
+  }, []); // we added empty brackets, telling React that our effect doesn't depend on any values from props or state, so it never needs to re-run.
+
+  return(
+
   <Provider store={store}>
     <Router>
       <Fragment>
@@ -30,5 +43,5 @@ const App = () => (
       </Fragment>
     </Router>
   </Provider>
-);
+)};
 export default App;

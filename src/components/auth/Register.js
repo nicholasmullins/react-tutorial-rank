@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux'; // this allows us to connect our components to Redux
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert'; // this is our setAlert REDUX action
 import { register } from '../../actions/auth'; // this is our register REDUX action
 
 import PropTypes from 'prop-types'
 
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   // we were doing props but we destructured them and also used PropTypes at the bottom 
   const [formData, setFormData] = useState({
     name: '',
@@ -56,6 +56,11 @@ const Register = ({ setAlert, register }) => {
       //   }
     }
   };
+
+  // Redirects us to dashboard ...did all of this first in Login page. 
+  if(isAuthenticated) {
+    return <Redirect to='/dashboard' />
+  }
 
   return (
     <Fragment>
@@ -121,10 +126,17 @@ const Register = ({ setAlert, register }) => {
 
 Register.propTypes = { // this gives our function of Register the prop types so we can just call them from inside. No passing down props from a parent!
   setAlert: PropTypes.func.isRequired,
-  register: PropTypes.func.isRequired
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+
 }
 
-export default connect(null, { setAlert, register })(Register); // to use connect, it must be called on the export.
+
+const mapStateToProps = state => ({ // mapStateToProps passes down state to props
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, { setAlert, register })(Register); // to use connect, it must be called on the export.
 // whenever we want to use an redux Action, we have to import it up top and
 // then we have to put it as a parameter in connect()
 // Connect() takes two parameters: 1) any kind of state you want to map  2) an object
