@@ -4,10 +4,11 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Alert from './components/layout/Alert';
 
-// these are the two things we need to bring in to use Redux. Provider and
+// Two things we need to bring in to use Redux in our App.Js: 1)Provider and 2) the Store
 
-// Since redux is separate from React, we bring react and redux together by bringing Provider in and wrapping our code in Provider
+// Since redux is separate from React, we bring react and redux together by bringing Provider in and wrapping our code //// in Provider
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -18,8 +19,10 @@ const App = () => (
     <Router>
       <Fragment>
         <Navbar />
-        <Route exact path='/' component={Landing} />
+        <Route exact path='/' component={Landing} /> 
         <section className='container'></section>
+        <Alert /> 
+        {/* we want the Alert instance in the container but not in the Switch since the Switch can only contain Routes */}
         <Switch>
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />

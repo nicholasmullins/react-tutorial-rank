@@ -2,3 +2,8 @@
 
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL'
+
+
+// All our REDUX types are assigned to variables here, so we can just bring them in to any component via importing variables. 

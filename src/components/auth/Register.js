@@ -1,8 +1,14 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux'; // this allows us to connect our components to Redux
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import { setAlert } from '../../actions/alert'; // this is our setAlert REDUX action
+import { register } from '../../actions/auth'; // this is our register REDUX action
 
-const Register = () => {
+import PropTypes from 'prop-types'
+
+
+const Register = ({ setAlert, register }) => {
+  // we were doing props but we destructured them and also used PropTypes at the bottom 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,9 +25,9 @@ const Register = () => {
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      console.log('Passwords do not match');
+      setAlert('Passwords do not match', 'danger'); // we put Danger because of danger in our CSS // we were saying props.setAlert but now we don't have to since we passed it into the function by destructuring.
     } else {
-      console.log('Success!');
+      register( {name, email, password} ); // we can access these because we are calling them from the component state (formData)
 
       // WROTE ALL THIS WITH INSTRUCTOR to learn how to use axios to make promise-based HTTP requests. We will be re-doing this with a Redux Action.
       // But I wanted you to see the code and know that I understood how all of this works
@@ -113,4 +119,13 @@ const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = { // this gives our function of Register the prop types so we can just call them from inside. No passing down props from a parent!
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
+}
+
+export default connect(null, { setAlert, register })(Register); // to use connect, it must be called on the export.
+// whenever we want to use an redux Action, we have to import it up top and
+// then we have to put it as a parameter in connect()
+// Connect() takes two parameters: 1) any kind of state you want to map  2) an object
+// with any actions you want to use (like setAlert)
