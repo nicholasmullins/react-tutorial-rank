@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
       return [...state, payload]; // since state is immutable, we must include the original state (...state) and then what you want to change state to (payload)
     case REMOVE_ALERT:
       return state.filter(alert => alert.id !== payload); // this payload is the payload: id dispatched from our timeout in actions/alert
-                                                          // as long as the current alert ID doesn't match the payload then return it. 
+                                                         // as long as the current alert ID doesn't match the payload then return it. 
     default:
       return state;
   }
