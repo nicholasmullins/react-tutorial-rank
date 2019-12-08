@@ -27,4 +27,40 @@ export const getCurrentProfile = () => async dispatch => {
     
 }
 
-// Create or update pr
+// Create or update profile 
+// passing in history object which has a method that will redirect us to a client side route.
+export const createProfile = (formData, history, edit = false) => async dispatch => {
+    
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const res = await axios.post('/api/profile', formData, config);
+
+        dispatch ({
+            type: GET_PROFILE,
+            payload: res.data
+        });
+
+        dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created')); // will bring use setAlert function that if edit is true/false...then display one or the other
+
+        if(!edit) {
+            history.push('/dashboard'); // can't use ReDirect method in a route so you have to use the history object with push method.
+        }
+
+    } catch (err) {
+        const errors = err.response.data.errors;
+
+        if(errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger'))) // this takes our errors array in our backend and calls setAlert to display an alert
+        }
+
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        })
+    }
+}
