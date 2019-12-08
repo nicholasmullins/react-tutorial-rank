@@ -124,7 +124,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   );
 };
 
-Register.propTypes = { // this gives our function of Register the prop types so we can just call them from inside. No passing down props from a parent!
+Register.propTypes = { // This is how you pass down props from the Redux store to the component. By using connect and mapping out the state to prop and using proptypes
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
