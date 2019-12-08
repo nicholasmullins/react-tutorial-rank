@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
@@ -13,27 +14,30 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]); // maybe this wasn't the right thing to do, check back on it later as it was an empty array but was throwing an error.
 
-{/* // IF the profile is null and it's still loading THEN we show the spinner. Alse we are bringing in user and user.name from above and using && to say IF user exists, THEN show their name*/}
+    /* // IF the profile is null and it's still loading THEN we show the spinner. Alse we are bringing in user and user.name from above and using && to say IF user exists, THEN show their name*/
 
-  return loading && profile === null ? <Spinner /> : <Fragment>
-    <h1 className="large text-primary">Dashboard</h1>
-  <p className="lead">
-    <i className="fas fa-user"></i> Welcome { user && user.name } </p>
-  
-  {/* // If / else statement to see if the user has a profile or not.  */}
-  {profile !== null ? (
-  <Fragment>has profile</Fragment>
+
+  return loading && profile === null ? (
+    <Spinner />
   ) : (
-    <Fragment>has not</Fragment>
-  )}
+    <Fragment>
+      <h1 className='large text-primary'>Dashboard</h1>
+      <p className='lead'>
+        <i className='fas fa-user'></i> Welcome {user && user.name}{' '}
+      </p>
 
-  </Fragment>; 
-  
-  
-
+      {/* // If / else statement to see if the user has a profile or not.  */}
+      {profile !== null ? (
+        <Fragment>has profile</Fragment>
+      ) : (
+        <Fragment>
+          <p>You have not yet setup a profile, please add some info:</p>
+          <Link to='/create-profile' className='btn btn-primary my-1'>Create Your Shit</Link>
+        </Fragment>
+      )}
+    </Fragment>
+  );
 };
-
-
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
