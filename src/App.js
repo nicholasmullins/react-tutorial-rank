@@ -11,6 +11,7 @@ import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
+import Videos from './components/videos/Videos';
 
 // Two things we need to bring in to use Redux in our App.Js: 1)Provider and 2) the Store
 
@@ -57,6 +58,7 @@ const App = () => {
                 path='/edit-profile'
                 component={EditProfile}
               />
+              <PrivateRoute exact path='/videos' component={Videos} />
             </Switch>
           </section>
         </Fragment>
