@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom'; // we have to bring in withRouter to be able to use our history object to redirect pages from the route
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../../actions/profile';
+import { createProfile } from '../../actions/profile';
 
 const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
