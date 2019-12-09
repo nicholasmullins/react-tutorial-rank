@@ -9,7 +9,8 @@ import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
-import Profiles from './components/profiles/Profiles'
+import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
 
 // Two things we need to bring in to use Redux in our App.Js: 1)Provider and 2) the Store
 
@@ -44,6 +45,7 @@ const App = () => {
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/profiles' component={Profiles} />
+              <Route exact path='/profile/:id' component={Profile} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute
                 exact
