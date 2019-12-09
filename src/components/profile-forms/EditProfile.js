@@ -1,10 +1,15 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom'; // we have to bring in withRouter to be able to use our history object to redirect pages from the route
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
-const CreateProfile = ({ createProfile, history }) => {
+const EditProfile = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile,
+  history
+}) => {
   const [formData, setFormData] = useState({
     status: '',
     bio: '',
@@ -13,6 +18,23 @@ const CreateProfile = ({ createProfile, history }) => {
     wanttolearn: ''
   });
 
+  useEffect(() => {
+    getCurrentProfile();
+
+    // in here we have to fill in the form with the current values. to do that we have to say IF it's loading or there is no profile.whatever then leave blank,
+    // if not THEN load the current profile field's info.
+
+    setFormData({
+      status: loading || !profile.status ? '' : profile.status,
+      bio: loading || !profile.bio ? '' : profile.bio,
+      knowledgelevel:
+        loading || !profile.knowledgelevel ? '' : profile.knowledgelevel,
+      purpose: loading || !profile.purpose ? '' : profile.purpose,
+      wanttolearn:
+        loading || !profile.wanttolearn ? '' : profile.wanttolearn.join(',')
+    });
+  }, [loading, getCurrentProfile]);
+
   const { status, bio, knowledgelevel, purpose, wanttolearn } = formData; // we destructured these so we can use them without using props.whatever
 
   const onChange = e =>
@@ -20,7 +42,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, history, true);
   };
 
   return (
@@ -115,8 +137,16 @@ const CreateProfile = ({ createProfile, history }) => {
   );
 };
 
-CreateProfile.propTypes = {
-  createProfile: PropTypes.func.isRequired
+EditProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
-export default connect(null, { createProfile })(withRouter(CreateProfile)); // if we don't wrap our function in withRouther than we can't use our history object
+const mapStateToProps = state => ({
+  profile: state.profile
+});
+
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  withRouter(EditProfile)
+);

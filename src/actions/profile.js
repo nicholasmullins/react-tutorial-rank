@@ -3,7 +3,9 @@ import { setAlert } from './alert';
 
 import {
     GET_PROFILE,
-    PROFILE_ERROR
+    PROFILE_ERROR,
+    CLEAR_PROFILE,
+    ACCOUNT_DELETED
 } from './types';
 
 // Get current user's profile
@@ -27,6 +29,7 @@ export const getCurrentProfile = () => async dispatch => {
     
 }
 
+
 // Create or update profile 
 // passing in history object which has a method that will redirect us to a client side route.
 export const createProfile = (formData, history, edit = false) => async dispatch => {
@@ -36,7 +39,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
             headers: {
                 'Content-Type': 'application/json'
             }
-        }
+        };
 
         const res = await axios.post('/api/profile', formData, config);
 
@@ -45,7 +48,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
             payload: res.data
         });
 
-        dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created')); // will bring use setAlert function that if edit is true/false...then display one or the other
+        dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success')); // will bring use setAlert function that if edit is true/false...then display one or the other
 
         if(!edit) {
             history.push('/dashboard'); // can't use ReDirect method in a route so you have to use the history object with push method.
@@ -64,3 +67,26 @@ export const createProfile = (formData, history, edit = false) => async dispatch
         })
     }
 }
+
+// Delete account & profile
+
+export const deleteAccount = () => async dispatch => {
+    if(window.confirm('Are you sure? Deleting your account is a final move')) {
+
+        try {
+            const res = await axios.delete('/api/profile');
+    
+            dispatch({type: CLEAR_PROFILE});
+            dispatch({type: ACCOUNT_DELETED});
+    
+            dispatch(setAlert('Your account has been permanently deleted'));
+
+        } catch(err) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
+    }
+
+};

@@ -12,6 +12,7 @@ export const LOGOUT = 'LOGOUT';
 export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 
 
 // All our REDUX types are assigned to variables here, so we can just bring them in to any component via importing variables. 

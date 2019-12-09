@@ -5,7 +5,7 @@ const initialState = {
     profiles: [],  // this is for the profile listing page.
     loading: true,
     error: {}
-}
+};
 
 export default function(state = initialState, action) {
     const { type, payload } = action;
@@ -21,7 +21,8 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 error: payload,
-                loading: false
+                loading: false,
+                profile: null
             };
         case CLEAR_PROFILE: 
             return {
