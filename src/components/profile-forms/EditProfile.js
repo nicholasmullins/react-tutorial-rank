@@ -17,7 +17,7 @@ const EditProfile = ({
     purpose: '',
     wanttolearn: ''
   });
-
+  // eslint-disable-next-line
   useEffect(() => {
     getCurrentProfile();
 
@@ -33,6 +33,7 @@ const EditProfile = ({
       wanttolearn:
         loading || !profile.wanttolearn ? '' : profile.wanttolearn.join(',')
     });
+     // eslint-disable-next-line
   }, [loading, getCurrentProfile]);
 
   const { status, bio, knowledgelevel, purpose, wanttolearn } = formData; // we destructured these so we can use them without using props.whatever
