@@ -16,6 +16,9 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const GET_VIDEOS = 'GET_VIDEOS';
 export const VIDEO_ERROR = 'VIDEO_ERROR';
+export const UPDATE_LIKES = 'UPDATE_LIKES';
+export const DELETE_VIDEO = 'DELETE_VIDEO';
+export const ADD_VIDEO = 'ADD_VIDEO';
 
 
-// All our REDUX types are assigned to variables here, so we can just bring them in to any component via importing variables. 
+// All our REDUX types are assigned to variables here, so we can just bring them in to any component via importing variables.

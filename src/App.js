@@ -9,6 +9,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import CreateProfile from './components/profile-forms/CreateProfile';
 import EditProfile from './components/profile-forms/EditProfile';
+import AddVideo from './components/video-forms/AddVideo'
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Videos from './components/videos/Videos';
@@ -57,6 +58,11 @@ const App = () => {
                 exact
                 path='/edit-profile'
                 component={EditProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/post-video'
+                component={AddVideo}
               />
               <PrivateRoute exact path='/videos' component={Videos} />
             </Switch>
