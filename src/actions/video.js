@@ -73,7 +73,7 @@ export const deleteVideo = id => async dispatch => {
       payload: id
     });
 
-    dispatch(setAlert('Post removed', 'success'));
+    dispatch(setAlert('Post Removed', 'success'));
   } catch (err) {
     dispatch({
       type: VIDEO_ERROR,
@@ -99,13 +99,8 @@ export const addVideo = formData => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Video posted', 'success'));
+    dispatch(setAlert('Video Posted', 'success'));
   } catch (err) {
-    // const errors = err.response.data.errors;
-
-    // if(errors) {
-    //     errors.forEach(error => dispatch(setAlert(error.msg, 'danger'))) // this takes our errors array in our backend and calls setAlert to display an alert
-    // }
 
     dispatch({
       type: VIDEO_ERROR,
@@ -131,34 +126,49 @@ export const getVideo = id => async dispatch => {
   }
 };
 
-// // Add Review
+// Add Review
 
-// export const addReview = (postId, formData) => async dispatch => {
-//   const config = {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   };
+export const addReview = (videoId, formData) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
 
-//   try {
-//     const res = await axios.post('/api/videos/', formData, config);
+  try {
+    const res = await axios.post(`/api/videos/review/${videoId}`, formData, config);
 
-//     dispatch({
-//       type: ADD_VIDEO,
-//       payload: res.data
-//     });
+    dispatch({
+      type: ADD_REVIEW,
+      payload: res.data
+    });
 
-//     dispatch(setAlert('Video posted', 'success'));
-//   } catch (err) {
-//     // const errors = err.response.data.errors;
+    dispatch(setAlert('Review Added', 'success'));
+  } catch (err) {
+    
 
-//     // if(errors) {
-//     //     errors.forEach(error => dispatch(setAlert(error.msg, 'danger'))) // this takes our errors array in our backend and calls setAlert to display an alert
-//     // }
+    dispatch({
+      type: VIDEO_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
 
-//     dispatch({
-//       type: VIDEO_ERROR,
-//       payload: { msg: err.response.statusText, status: err.response.status }
-//     });
-//   }
-// };
+// Delete Review
+
+export const deleteReview = (videoId, reviewId) => async dispatch => {
+  try {
+    await axios.delete(`/api/videos/${videoId}/${reviewId}`);
+    dispatch({
+      type: REMOVE_REVIEW,
+      payload: reviewId
+    });
+
+    dispatch(setAlert('Review Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: VIDEO_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

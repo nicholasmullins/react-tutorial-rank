@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import VideoItem from '../videos/VideoItem';
+import ReviewForm from '../video/ReviewForm';
+import ReviewItem from '../video/ReviewItem';
 import Spinner from '../layout/Spinner';
 import { getVideo } from '../../actions/video';
 
 const Video = ({ getVideo, video: { video, loading }, match }) => {
   useEffect(() => {
     getVideo(match.params.id);
+    // eslint-disable-next-line
   }, [getVideo]);
 
   return loading || video === null ? (
@@ -19,6 +22,10 @@ const Video = ({ getVideo, video: { video, loading }, match }) => {
         Back To Videos
       </Link>
       <VideoItem video={video} showActions={true} />
+      <ReviewForm videoId={video._id}/>
+      <div className="reviews">
+         <ReviewItem key={review._id} review={review} videoId={video._id}/>
+      </div>
     </Fragment>
   );
 };
