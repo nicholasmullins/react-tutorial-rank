@@ -6,7 +6,10 @@ import {
   VIDEO_ERROR,
   UPDATE_LIKES,
   DELETE_VIDEO,
-  ADD_VIDEO
+  ADD_VIDEO,
+  GET_VIDEO,
+  ADD_REVIEW,
+  REMOVE_REVIEW
 } from './types';
 
 // Get Videos
@@ -110,3 +113,52 @@ export const addVideo = formData => async dispatch => {
     });
   }
 };
+
+// Get One Video
+
+export const getVideo = id => async dispatch => {
+  try {
+    const res = await axios.get(`/api/videos/${id}`);
+    dispatch({
+      type: GET_VIDEO,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: VIDEO_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// // Add Review
+
+// export const addReview = (postId, formData) => async dispatch => {
+//   const config = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
+
+//   try {
+//     const res = await axios.post('/api/videos/', formData, config);
+
+//     dispatch({
+//       type: ADD_VIDEO,
+//       payload: res.data
+//     });
+
+//     dispatch(setAlert('Video posted', 'success'));
+//   } catch (err) {
+//     // const errors = err.response.data.errors;
+
+//     // if(errors) {
+//     //     errors.forEach(error => dispatch(setAlert(error.msg, 'danger'))) // this takes our errors array in our backend and calls setAlert to display an alert
+//     // }
+
+//     dispatch({
+//       type: VIDEO_ERROR,
+//       payload: { msg: err.response.statusText, status: err.response.status }
+//     });
+//   }
+// };

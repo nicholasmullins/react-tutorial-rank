@@ -3,7 +3,8 @@ import {
     VIDEO_ERROR,
     UPDATE_LIKES,
     DELETE_VIDEO,
-    ADD_VIDEO
+    ADD_VIDEO,
+    GET_VIDEO
 } from '../actions/types';
 
 const initialState = {
@@ -21,6 +22,12 @@ export default function (state = initialState, action) {
         return {
             ...state,
             videos: payload,
+            loading: false
+        };
+        case GET_VIDEO:
+        return {
+            ...state,
+            video: payload,
             loading: false
         };
         case ADD_VIDEO:

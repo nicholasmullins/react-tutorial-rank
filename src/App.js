@@ -13,6 +13,7 @@ import AddVideo from './components/video-forms/AddVideo'
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Videos from './components/videos/Videos';
+import Video from './components/video/Video';
 
 // Two things we need to bring in to use Redux in our App.Js: 1)Provider and 2) the Store
 
@@ -65,6 +66,7 @@ const App = () => {
                 component={AddVideo}
               />
               <PrivateRoute exact path='/videos' component={Videos} />
+              <PrivateRoute exact path='/videos/:id' component={Video} />
             </Switch>
           </section>
         </Fragment>

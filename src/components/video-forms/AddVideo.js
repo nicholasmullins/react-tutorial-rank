@@ -25,26 +25,28 @@ const VideoForm = ({ addVideo }) => {
     <Fragment>
       <h1 className='large text-primary'>Post a Video</h1>
       <p className='lead'>
-        <i className='fas fa-user'></i> Tell Us About the Video You Want to Share!
+        <i className='fas fa-user'></i> Tell Us About the Video You Want to
+        Share!
       </p>
       <small>* = required field</small>
 
-      <form className='form' onSubmit={e => onSubmit(e)}> 
-
-      <div className='form-group'>
+      <form className='form' onSubmit={e => onSubmit(e)}>
+        <div className='form-group'>
           <input
             type='text'
-            placeholder='Enter the YouTube URL'
+            placeholder='What is the ID of the YouTube URL? See Example Below.'
             name='link'
             value={link}
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Copy and Paste the YouTube URL - Do NOT use an Embed Link
+            Copy and Paste ONLY the END of the URL <br /> (Example:
+            youtube.com/watch?v=
+            <em style={{ color: 'red' }}>paSTeTh18</em>)
           </small>
-      </div>
-      
-      <div className='form-group'>
+        </div>
+
+        <div className='form-group'>
           <input
             type='text'
             placeholder='What is the title of your video?'
@@ -53,11 +55,11 @@ const VideoForm = ({ addVideo }) => {
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Write a straightforward and informative title 
+            Write a straightforward and informative title
           </small>
-      </div>
+        </div>
 
-      <div className='form-group'>
+        <div className='form-group'>
           <textarea
             placeholder='Brief description of the video?'
             name='desc'
@@ -78,10 +80,10 @@ const VideoForm = ({ addVideo }) => {
           <small className='form-text'>
             Please write the name of the teacher in the video
           </small>
-      </div>
+        </div>
 
-          <input type='submit' className='btn btn-dark my-1' value='Submit' />
-        </form>
+        <input type='submit' className='btn btn-dark my-1' value='Submit' />
+      </form>
     </Fragment>
   );
 };

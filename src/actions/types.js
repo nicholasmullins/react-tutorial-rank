@@ -15,10 +15,14 @@ export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const GET_VIDEOS = 'GET_VIDEOS';
+export const GET_VIDEO = 'GET_VIDEO';
 export const VIDEO_ERROR = 'VIDEO_ERROR';
 export const UPDATE_LIKES = 'UPDATE_LIKES';
 export const DELETE_VIDEO = 'DELETE_VIDEO';
 export const ADD_VIDEO = 'ADD_VIDEO';
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const REMOVE_REVIEW = 'REMOVE_REVIEW';
+
 
 
 // All our REDUX types are assigned to variables here, so we can just bring them in to any component via importing variables.
