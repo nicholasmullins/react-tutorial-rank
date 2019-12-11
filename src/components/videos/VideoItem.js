@@ -10,7 +10,7 @@ const VideoItem = ({
   removeLike,
   deleteVideo,
   auth,
-  video: { _id, title, link, desc, name, avatar, user, likes, reviews, date },
+  video: { _id, title, link, teacher, desc, name, avatar, user, likes, reviews, date },
   showActions
 }) => (
   <div className='post bg-white p-1 my-1'>
@@ -32,7 +32,7 @@ const VideoItem = ({
         allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
         allowFullScreen
       ></iframe>
-      <p className='my-1'>Instructor: {desc}</p>
+      <p className='my-1'>Instructor: {teacher}</p>
       <p className='post-date'>
         Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
@@ -56,7 +56,7 @@ const VideoItem = ({
           </button>
           <Link to={`/videos/${_id}`} className='btn btn-primary'>
             {/* put in an if statement to only display number of comments IF there is a comment */}
-            Reviews{' '}
+            Write a Review{' '}
             {reviews.length > 0 && (
               <span className='comment-count'> {reviews.length}</span>
             )}
