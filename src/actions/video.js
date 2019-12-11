@@ -138,6 +138,7 @@ export const addReview = (videoId, formData) => async dispatch => {
   try {
     const res = await axios.post(`/api/videos/review/${videoId}`, formData, config);
 
+    console.log(res)
     dispatch({
       type: ADD_REVIEW,
       payload: res.data
@@ -158,7 +159,7 @@ export const addReview = (videoId, formData) => async dispatch => {
 
 export const deleteReview = (videoId, reviewId) => async dispatch => {
   try {
-    await axios.delete(`/api/videos/${videoId}/${reviewId}`);
+    await axios.delete(`/api/videos/review/${videoId}/${reviewId}`);
     dispatch({
       type: REMOVE_REVIEW,
       payload: reviewId

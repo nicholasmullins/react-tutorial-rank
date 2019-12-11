@@ -1,4 +1,4 @@
-import React, { Fragment,useState } from 'react'; // we are bringing in useState because this is a form and will need to useState (sending it to the reducer which holds state)
+import React, { useState } from 'react'; // we are bringing in useState because this is a form and will need to useState (sending it to the reducer which holds state)
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addReview } from '../../actions/video';

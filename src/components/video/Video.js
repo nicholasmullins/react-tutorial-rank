@@ -11,7 +11,6 @@ import { getVideo } from '../../actions/video';
 const Video = ({ getVideo, video: { video, loading }, match }) => {
   useEffect(() => {
     getVideo(match.params.id);
-    // eslint-disable-next-line
   }, [getVideo]);
 
   return loading || video === null ? (
@@ -22,9 +21,11 @@ const Video = ({ getVideo, video: { video, loading }, match }) => {
         Back To Videos
       </Link>
       <VideoItem video={video} showActions={true} />
-      <ReviewForm videoId={video._id}/>
-      <div className="reviews">
-         <ReviewItem key={review._id} review={review} videoId={video._id}/>
+      <ReviewForm videoId={video._id} />
+      <div className='comments'>
+        {video.reviews.map(review => (
+          <ReviewItem key={review._id} review={review} videoId={video._id} />
+        ))}
       </div>
     </Fragment>
   );

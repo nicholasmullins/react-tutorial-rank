@@ -23,7 +23,7 @@ const Videos = ({ getVideos, video: { videos, loading } }) => {
       <Link className='btn btn-light my-1' to='/post-video'>
         Add A Video
       </Link>
-      <div className='videos'>
+      <div className='posts'>
         {videos.map(video => (
           <VideoItem key={video._id} video={video} />
         ))}
