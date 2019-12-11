@@ -15,9 +15,9 @@ const Profiles = ({ getProfiles, profile: {profiles, loading} }) => {
     
     return <Fragment>
         { loading ? <Spinner /> : <Fragment>
-        <h1 className="large text-primary">Developers</h1>
+        <h1 className="large text-primary">Contributors</h1>
         <div className="lead">
-            <i className="fab fa-connecdevelop"></i> Browse and connect with developers
+            <i className="fab fa-connecdevelop"></i> Meet those who contribute content to our site
             <div className="profiles">
                 {profiles.length > 0 ? (
                     profiles.map(profile => (

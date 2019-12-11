@@ -23,6 +23,7 @@ const VideoItem = ({
     <div>
       <p className='my-1'>{title}</p>
       <p className='my-1'>{desc}</p>
+      <div className='video-container'>
       <iframe
         title={title}
         width='560'
@@ -32,6 +33,7 @@ const VideoItem = ({
         allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
         allowFullScreen
       ></iframe>
+      </div>
       <p className='my-1'>Instructor: {teacher}</p>
       <p className='post-date'>
         Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
