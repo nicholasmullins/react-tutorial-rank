@@ -23,7 +23,7 @@ const Login = ({ login, isAuthenticated }) => {
   // Redirect if logged in
 
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />; //Redirect is something we can bring in from react-router-dom. It's like a Link that takes you to another page
+    return <Redirect to='/videos' />; //Redirect is something we can bring in from react-router-dom. It's like a Link that takes you to another page
   }
 
   return (
@@ -63,12 +63,14 @@ const Login = ({ login, isAuthenticated }) => {
   );
 };
 
-Login.propTypes = { //proptypes tells the props. 
+Login.propTypes = {
+  //proptypes tells the props.
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
 
-const mapStateToProps = state => ({ // this maps a state to a prop
+const mapStateToProps = state => ({
+  // this maps a state to a prop
   // mapStateToProps passes down state to props
   isAuthenticated: state.auth.isAuthenticated
 });

@@ -10,7 +10,19 @@ const VideoItem = ({
   removeLike,
   deleteVideo,
   auth,
-  video: { _id, title, link, teacher, desc, name, avatar, user, likes, reviews, date },
+  video: {
+    _id,
+    title,
+    link,
+    teacher,
+    desc,
+    name,
+    avatar,
+    user,
+    likes,
+    reviews,
+    date
+  },
   showActions
 }) => (
   <div className='post bg-white p-1 my-1'>
@@ -21,20 +33,22 @@ const VideoItem = ({
       </Link>
     </div>
     <div>
-      <p className='my-1'>{title}</p>
+      <Link to={`/videos/${_id}`}>
+        <p className='my-1 large'>{title}</p>
+      </Link>
       <p className='my-1'>{desc}</p>
       <div className='video-container'>
-      <iframe
-        title={title}
-        width='560'
-        height='315'
-        src={`https://www.youtube.com/embed/${link}`}
-        frameBorder='0'
-        allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-        allowFullScreen
-      ></iframe>
+        <iframe
+          title={title}
+          width='560'
+          height='315'
+          src={`https://www.youtube.com/embed/${link}`}
+          frameBorder='0'
+          allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+          allowFullScreen
+        ></iframe>
       </div>
-      <p className='my-1'>Instructor: {teacher}</p>
+      <p className='my-1'>INSTRUCTOR: {teacher}</p>
       <p className='post-date'>
         Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
@@ -58,7 +72,7 @@ const VideoItem = ({
           </button>
           <Link to={`/videos/${_id}`} className='btn btn-primary'>
             {/* put in an if statement to only display number of comments IF there is a comment */}
-            Write a Review{' '}
+            Reviews{' '}
             {reviews.length > 0 && (
               <span className='comment-count'> {reviews.length}</span>
             )}

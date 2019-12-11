@@ -8,23 +8,36 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>Contributors</Link>
+        <Link to='/post-video'>
+          {' '}
+          <i className='fas fa-plus-square' />
+          <span className='hide-sm'> Add a Video</span>
+        </Link>
+      </li>
+      <li>
+        <Link to='/profiles'>
+          {' '}
+          <i className='fas fa-users-cog' />
+          <span className='hide-sm'> Contributors</span>
+        </Link>
       </li>
       <li>
         <Link to='/videos'>
-          <i className='fas fa-video' /> <span className='hide-sm'>Videos</span>
+          {' '}
+          <i className='fas fa-video' />
+          <span className='hide-sm'> Videos</span>
         </Link>
       </li>
       <li>
         <Link to='/dashboard'>
           <i className='fas fa-user' />{' '}
-          <span className='hide-sm'>Dashboard</span>
+          <span className='hide-sm'> My Account</span>
         </Link>
       </li>
       <li>
         <a onClick={logout} href='/'>
           <i className='fas fa-sign-out-alt' />{' '}
-          <span className='hide-sm'>Logout</span>
+          <span className='hide-sm'> Logout</span>
         </a>
       </li>
     </ul>
@@ -47,8 +60,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <nav className='navbar bg-dark'>
       <h1>
-        <Link to='/'>
-          <i className='fas fa-code'></i> Tutorial Rank
+        <Link to='/videos'>
+          <i className='fas fa-thumbs-up'></i> Tutorial Rank
         </Link>
       </h1>
       {!loading && (

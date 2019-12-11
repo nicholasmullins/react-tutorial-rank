@@ -16,13 +16,10 @@ const Videos = ({ getVideos, video: { videos, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className='large text-primary'>Videos</h1>
-      <p className='lead'>
-        <i className='fas fa-user'></i>Video Tutorials for Every Language
+      <h1 className='large text-center-primary'>Video Tutorials</h1>
+      <p className='lead text-center'>
+        <i className='fas fa-tv'></i> YouTube Tutorials for Every Language
       </p>
-      <Link className='btn btn-light my-1' to='/post-video'>
-        Add A Video
-      </Link>
       <div className='posts'>
         {videos.map(video => (
           <VideoItem key={video._id} video={video} />
