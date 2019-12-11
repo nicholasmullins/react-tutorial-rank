@@ -16,7 +16,7 @@ import {
 
 export const getVideos = () => async dispatch => {
   try {
-    const res = await axios.get('/api/videos');
+    const res = await axios.get(process.env.REACT_APP_API_URL + '/api/videos');
     dispatch({
       type: GET_VIDEOS,
       payload: res.data
@@ -33,7 +33,9 @@ export const getVideos = () => async dispatch => {
 
 export const addLike = id => async dispatch => {
   try {
-    const res = await axios.put(`/api/videos/like/${id}`);
+    const res = await axios.put(
+      process.env.REACT_APP_API_URL + `/api/videos/like/${id}`
+    );
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data }
@@ -50,7 +52,9 @@ export const addLike = id => async dispatch => {
 
 export const removeLike = id => async dispatch => {
   try {
-    const res = await axios.put(`/api/videos/unlike/${id}`);
+    const res = await axios.put(
+      process.env.REACT_APP_API_URL + `/api/videos/unlike/${id}`
+    );
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data }
@@ -67,7 +71,7 @@ export const removeLike = id => async dispatch => {
 
 export const deleteVideo = id => async dispatch => {
   try {
-    await axios.delete(`/api/videos/${id}`);
+    await axios.delete(process.env.REACT_APP_API_URL + `/api/videos/${id}`);
     dispatch({
       type: DELETE_VIDEO,
       payload: id
@@ -92,7 +96,11 @@ export const addVideo = formData => async dispatch => {
   };
 
   try {
-    const res = await axios.post('/api/videos/', formData, config);
+    const res = await axios.post(
+      process.env.REACT_APP_API_URL + '/api/videos/',
+      formData,
+      config
+    );
 
     dispatch({
       type: ADD_VIDEO,
@@ -101,7 +109,6 @@ export const addVideo = formData => async dispatch => {
 
     dispatch(setAlert('Video Posted', 'success'));
   } catch (err) {
-
     dispatch({
       type: VIDEO_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
@@ -113,7 +120,9 @@ export const addVideo = formData => async dispatch => {
 
 export const getVideo = id => async dispatch => {
   try {
-    const res = await axios.get(`/api/videos/${id}`);
+    const res = await axios.get(
+      process.env.REACT_APP_API_URL + `/api/videos/${id}`
+    );
     dispatch({
       type: GET_VIDEO,
       payload: res.data
@@ -136,9 +145,13 @@ export const addReview = (videoId, formData) => async dispatch => {
   };
 
   try {
-    const res = await axios.post(`/api/videos/review/${videoId}`, formData, config);
+    const res = await axios.post(
+      process.env.REACT_APP_API_URL + `/api/videos/review/${videoId}`,
+      formData,
+      config
+    );
 
-    console.log(res)
+    console.log(res);
     dispatch({
       type: ADD_REVIEW,
       payload: res.data
@@ -146,8 +159,6 @@ export const addReview = (videoId, formData) => async dispatch => {
 
     dispatch(setAlert('Review Added', 'success'));
   } catch (err) {
-    
-
     dispatch({
       type: VIDEO_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
@@ -159,7 +170,10 @@ export const addReview = (videoId, formData) => async dispatch => {
 
 export const deleteReview = (videoId, reviewId) => async dispatch => {
   try {
-    await axios.delete(`/api/videos/review/${videoId}/${reviewId}`);
+    await axios.delete(
+      process.env.REACT_APP_API_URL +
+        `/api/videos/review/${videoId}/${reviewId}`
+    );
     dispatch({
       type: REMOVE_REVIEW,
       payload: reviewId
