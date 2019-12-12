@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getVideos } from '../../actions/video';
@@ -21,9 +20,7 @@ const Videos = ({ getVideos, video: { videos, loading } }) => {
         <i className='fas fa-tv'></i> YouTube Tutorials for Every Language
       </p>
       <div className='posts'>
-        {videos.map(video => (
-          <VideoItem key={video._id} video={video} />
-        ))}
+        {videos.sort((a,b) => b.likes.length - a.likes.length).map(video => (<VideoItem key={video._id} video={video} />))}
       </div>
     </Fragment>
   );

@@ -41,3 +41,5 @@ FUTURE FEATURES / UNSOLVED PROBLEMS
 Want to add a search function which will allow you to look up videos by language.
 Need to add a moderation feature which will allow me (the moderator) to approve any user profiles, posts etc.
 Would like to add functionality where users could contact other users who make their profiles public, to ask questions about certain videos or languages etc. 
+
+// COMPLETED!! - Want to add Reddit-type functionality where the top-liked videos appear at the top of the page
