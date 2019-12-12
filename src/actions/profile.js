@@ -13,7 +13,9 @@ import {
 
 export const getCurrentProfile = () => async dispatch => {
   try {
-    const res = await axios.get(process.env.REACT_APP_API_URL + '/api/profile/me');
+    const res = await axios.get(
+      process.env.REACT_APP_API_URL + '/api/profile/me'
+    );
 
     dispatch({
       type: GET_PROFILE,
@@ -51,7 +53,9 @@ export const getProfiles = () => async dispatch => {
 
 export const getProfileById = userId => async dispatch => {
   try {
-    const res = await axios.get(process.env.REACT_APP_API_URL + `/api/profile/user/${userId}`);
+    const res = await axios.get(
+      process.env.REACT_APP_API_URL + `/api/profile/user/${userId}`
+    );
 
     dispatch({
       type: GET_PROFILE,
@@ -79,7 +83,11 @@ export const createProfile = (
       }
     };
 
-    const res = await axios.post(process.env.REACT_APP_API_URL + '/api/profile', formData, config);
+    const res = await axios.post(
+      process.env.REACT_APP_API_URL + '/api/profile',
+      formData,
+      config
+    );
 
     dispatch({
       type: GET_PROFILE,
@@ -88,9 +96,7 @@ export const createProfile = (
 
     dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success')); // will bring use setAlert function that if edit is true/false...then display one or the other
 
-    if (!edit) {
-      history.push('/dashboard'); // can't use ReDirect method in a route so you have to use the history object with push method.
-    }
+    history.push('/profiles'); // can't use ReDirect method in a route so you have to use the history object with push method.
   } catch (err) {
     const errors = err.response.data.errors;
 

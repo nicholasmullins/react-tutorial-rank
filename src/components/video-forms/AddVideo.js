@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from 'react';
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addVideo } from '../../actions/video';
 
-const VideoForm = ({ addVideo }) => {
+const VideoForm = ({ addVideo, history }) => {
   const [formData, setFormData] = useState({
     title: '',
     desc: '',
@@ -19,6 +20,7 @@ const VideoForm = ({ addVideo }) => {
   const onSubmit = e => {
     e.preventDefault();
     addVideo(formData);
+    history.push(`/videos`)
   };
 
   return (
@@ -92,4 +94,4 @@ VideoForm.propTypes = {
   addVideo: PropTypes.func.isRequired
 };
 
-export default connect(null, { addVideo })(VideoForm);
+export default connect(null, { addVideo })(withRouter(VideoForm));

@@ -20,7 +20,7 @@ const Profiles = ({ getProfiles, profile: {profiles, loading} }) => {
             <i className="fab fa-connecdevelop"></i> Meet those who contribute content to our site
             <div className="profiles">
                 {profiles.length > 0 ? (
-                    profiles.map(profile => (
+                    profiles.slice(0).reverse().map(profile => (
                         <ProfileItem key={profile._id} profile={profile} />
                     ))
                 ) : <h4>No profiles...found</h4>}

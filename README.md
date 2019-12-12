@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+LINK TO MY APP
 
-## Available Scripts
+http://react-tutorial-rank.herokuapp.com/videos
 
-In the project directory, you can run:
+USER STORIES
 
-### `npm start`
+Our users would be aspiring or current developers who want a way to cut through YouTube and find the best tutorials for each language
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+WIREFRAME LINK
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Will turn in written copy to Will if needed. I used YouTube and Facebook as an inspiration. Video posting and commenting inspired by YouTube and Facebook with general posting with profiles/avatars associated with each video. Also, each user has a profile which outlines what languages they want to learn. 
 
-### `npm test`
+DESCRIPTION
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is a great application for aspiring developers to visit and post their favorite tutorials for learning programming and also rate and review existing posted tutorials. If an aspiring developer needed to learn a language quickly, they could find the video that other developers have had success with in learning that language efficiently. 
 
-### `npm run build`
+TECHNOLOGIES USED
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The MERN STACK including using REDUX for the frontend and SASS, Bootstrap and FontAwesome. Entity Relationship Diagrams gives further detail in what was used for routing, auth etc. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+INSTALLATION STEPS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Another developer would need to 
 
-### `npm run eject`
+Fork the github repos and then:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1)install the following dependencies for react-tutorial-rank:
+axios, moment, react-router-dom, react-redux, redux-thunk, uuid, react-devtools-extension, react-moment, react-router, react-dom
+2)install the following dependencies for node-tutorial-rank:
+bcryptjs, config, cors, express, express-validator, gravatra, jsonwebtoken, mongoose, request
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+or they could do an npm install requirements script for both repos
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ENTITY RELATIONSHIP DIAGRAMS
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Using the MERN stack with Express and React communicating with MongoDB Atlas. Deployed to Heroku using Config to link the MongoDB through a JSON file that contains the MongoURI. Used JSONWebToken for Authentication. Also using Axios to do client-side HTTP routing. And react-router for basic site routing. 
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+FUTURE FEATURES / UNSOLVED PROBLEMS
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Want to add a search function which will allow you to look up videos by language.
+Need to add a moderation feature which will allow me (the moderator) to approve any user profiles, posts etc.
+Would like to add functionality where users could contact other users who make their profiles public, to ask questions about certain videos or languages etc. 
