@@ -25,6 +25,9 @@ const Landing = ({ isAuthenticated }) => {
               Login
             </Link>
           </div>
+          <br></br>
+          <p>Or Sign-In with Google</p>
+          <div class='g-signin2' data-onsuccess='onSignIn'></div>
         </div>
       </div>
     </section>

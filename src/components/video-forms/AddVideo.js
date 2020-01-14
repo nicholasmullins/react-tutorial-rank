@@ -14,6 +14,11 @@ const VideoForm = ({ addVideo, history }) => {
 
   const { title, desc, teacher, link } = formData;
 
+
+
+
+
+
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -22,8 +27,10 @@ const VideoForm = ({ addVideo, history }) => {
     addVideo(formData);
     history.push(`/videos`)
   };
+  
 
   return (
+   
     <Fragment>
       <h1 className='large text-primary'>Post a Video</h1>
       <p className='lead'>
@@ -36,7 +43,7 @@ const VideoForm = ({ addVideo, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            placeholder='What is the ID of the YouTube URL? See Example Below.'
+            placeholder='Paste in the  ID ONLY of the YouTube URL? See Example Below.'
             name='link'
             value={link}
             onChange={e => onChange(e)}

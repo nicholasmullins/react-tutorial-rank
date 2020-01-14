@@ -38,8 +38,10 @@ Using the MERN stack with Express and React communicating with MongoDB Atlas. De
 
 FUTURE FEATURES / UNSOLVED PROBLEMS
 
-Want to add a search function which will allow you to look up videos by language.
-Need to add a moderation feature which will allow me (the moderator) to approve any user profiles, posts etc.
-Would like to add functionality where users could contact other users who make their profiles public, to ask questions about certain videos or languages etc. 
+1) Want to add a search function which will allow you to look up videos by language.
+2) Need to add a moderation feature which will allow me (the moderator) to approve any user profiles, posts etc.
+3) Would like to add functionality where users could contact other users who make their profiles public, to ask questions about certain videos or languages etc. 
+4) Want to add where you don't have to use gravatar to submit a photo of yourself. Where you can sign in with Google instead and it will use that avatar
+5) Want to add an equation that will automatically splice off the end of the youtube link that we need after the equal sign and just pop that part into our iframe link in the AddVideo page
 
 // COMPLETED!! - Want to add Reddit-type functionality where the top-liked videos appear at the top of the page
